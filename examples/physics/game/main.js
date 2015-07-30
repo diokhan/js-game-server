@@ -15,8 +15,9 @@ var player = new Sprite({
   y: options.height/2,
   width: 20,
   height: 50,
-  color: '#FF0000'
-});
+  color: '#FF0000',
+  speed: 2
+},'player', true);
 engine.scene.add(player);
 engine.start();
 //canvas.width = width;

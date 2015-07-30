@@ -1,11 +1,15 @@
 var Scene = function (ctx) {
   this.sprites = [];
   this.ctx = ctx || {};
+  this.controllables = [];
   return this;
 };
 
 Scene.prototype.add = function (sprite, options) {
   this.sprites.push(sprite);
+  if (sprite.controllable) {
+    this.controllables.push(sprite);
+  }
 };
 
 Scene.prototype.remove = function (name) {
@@ -29,3 +33,8 @@ Scene.prototype.get = function () {
   return this.sprites;
 };
 
+Scene.prototype.move = function (direction) {
+  this.controllables.forEach(function (sprite) {
+    sprite.move(direction);
+  })
+};
